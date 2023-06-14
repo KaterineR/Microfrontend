@@ -4,15 +4,16 @@ import axios from 'axios';
 import Cookies from 'universal-cookie';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import configData from '../config/config.json';
+
 
 const cookies = new Cookies();
 
 const regexSoloLetras = /^[a-zA-Z ]+$/;
 const regexSoloNumeros = /^[0-9]+$/;
 
-const URL_USER = configData.CUSER_API_URL;
-const URL_IMAGENSTORAGE = configData.IMAGENSTORAGE_API_URL;
+const URL_USER = process.env.REACT_APP_USUARIO;
+const URL_IMAGENSTORAGE = process.env.REACT_APP_IMAGENSTORAGE;
+const urlaux =process.env.REACT_APP_FOTOAUXI;
 
 const ActuliazarDatos = () => {
 
@@ -61,7 +62,7 @@ const ActuliazarDatos = () => {
   const emaila = cookies.get('email');
   const departamentoa = cookies.get('departamento');
   const sitioa= cookies.get('sitio');
-  const primer_ini_sesiona= cookies.get('primer_ini_sesion');
+
   const solicitud_parqueoa= cookies.get('solicitud_parqueo');
   const id_zonaa= cookies.get('id_zona');
   const id_horarioa= cookies.get('id_horario');
@@ -77,9 +78,9 @@ const ActuliazarDatos = () => {
   const [direccion, setDireccion] = useState("");
 
   const [cargo, setCargo] = useState("");
-  const [sitio, setSitio] = useState("sitio");
-  const [estado, setEstado] = useState(1);
-  const [fotoString, setFotoString] = useState("imagen.jpg");
+ 
+ 
+  
 
 
   const [errorNombre, setErrorNombre] = useState('');
@@ -175,7 +176,7 @@ const ActuliazarDatos = () => {
       await axios.post(URL_IMAGENSTORAGE, fd)
       .then(response=>{ 
           var urli= response.data.urlimagen;
-          var auxi = `http://localhost:8000/${urli}`;
+          var auxi = `${urlaux}/${urli}`;
       axios.put(`${URL_USER}/${miId}`, {
       name: nombre,
       apellido: apellido,
@@ -191,6 +192,7 @@ const ActuliazarDatos = () => {
       departamento: Departamento,
       sitio: sitioa,
       id_zona: id_zonaa,
+
       })
       })
       resetForm();

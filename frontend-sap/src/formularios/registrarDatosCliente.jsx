@@ -4,6 +4,7 @@ import axios from 'axios';
 
 const regexSoloLetras = /^[a-zA-Z]+$/;
 const regexSoloNumeros = /^[0-9]+$/;
+const urlresgister = process.env.REACT_APP_REGISTROUSUARIO;
 
 const FormularioRegistroCli = () => {
 
@@ -55,9 +56,7 @@ const FormularioRegistroCli = () => {
   const [direccion, setDireccion] = useState("");
 
   const [cargo, setCargo] = useState("");
-  const [sitio, setSitio] = useState("sitio");
-  const [estado, setEstado] = useState(1);
-  const [fotoString, setFotoString] = useState("imagen.jpg");
+
 
 
   const [errorNombre, setErrorNombre] = useState('');
@@ -141,7 +140,7 @@ const FormularioRegistroCli = () => {
     if (!errorNombre && !errorDepartamento && !errorTelefono && !errorCI && !errorContraseña && !errorConfirmarContraseña && !errorCorreoElectronico && !errorApellido) {
       console.log("El formulario se envió correctamente",Departamento, cargo);
 
-      await axios.post('http://localhost:8000/api/auth/register', {
+      await axios.post(urlresgister, {
     
       name: nombre,
       apellido: apellido,

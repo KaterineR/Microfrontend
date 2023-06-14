@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Button, Modal, Col, Row } from 'react-bootstrap';
 import axios from 'axios';
+const URL_USER = process.env.REACT_APP_USUARIO;
 
 function ListaParqueo() {
   const [boletas, setBoletas] = useState([]);
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/users")
+      .get(URL_USER)
       .then((response) => {
         setBoletas(response.data);
       })

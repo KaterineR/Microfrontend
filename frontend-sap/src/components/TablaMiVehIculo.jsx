@@ -10,7 +10,7 @@ const cookies = new Cookies();
 
 const TablaMiVehiculo = () => {
     const [vehiculos, setVehiculos] = useState( [] );
-    const API_URL_VEHICULOS = configData.VEHICLIS_API_URL;
+    const API_URL_VEHICULOS = process.env.REACT_APP_VEHICLIS;
     const miId = cookies.get('id');
 
     useEffect(()=>{

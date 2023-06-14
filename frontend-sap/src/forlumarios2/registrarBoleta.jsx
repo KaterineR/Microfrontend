@@ -8,9 +8,10 @@ import 'react-toastify/dist/ReactToastify.css';
 import configData from '../config/config.json';
 
 const cookies = new Cookies();
-const URL_CONVOCATARIA = configData.CONVOCATORIA_API_URL;
-const URL_BOLETA = configData.BOLETAS_API_URL;
-const URL_IMAGENSTORAGE = configData.IMAGENSTORAGE_API_URL;
+const URL_CONVOCATARIA = process.env.REACT_APP_CONVOCATORIA;
+const urlboletas= process.env.REACT_APP_BOLETAS;
+const URL_IMAGENSTORAGE = process.env.REACT_APP_IMAGENSTORAGE;
+const urlaux =process.env.REACT_APP_FOTOAUXI;
 
 function BoletaForm() {
   const [formData, setFormData] = useState({
@@ -131,8 +132,8 @@ function BoletaForm() {
     await axios.post(URL_IMAGENSTORAGE, fd)
     .then(response=>{ 
         var urli= response.data.urlimagen;
-        var auxi = `http://localhost:8000/${urli}`;
-        axios.post(URL_BOLETA, 
+        var auxi = `${urlaux}/${urli}`;
+        axios.post(urlboletas, 
         {
           mensualidad: formData.mesesPagar,
           monto: formData.costoMensualida,

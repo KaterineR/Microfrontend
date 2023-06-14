@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import axios from 'axios'
 import configData from '../config/config.json'
 
-const API_URL_USERS = configData.SOLOGUARDIA_API_URL;
+const API_URL_USERS = process.env.REACT_APP_SOLOGUARDIA;
 // const CAPI_URL_USERS = configData.CUSER_API_URL;
 
 const TablaUserGuardiaSE = () => {

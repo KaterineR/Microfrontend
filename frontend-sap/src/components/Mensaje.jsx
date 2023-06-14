@@ -13,7 +13,7 @@ function FormDisabledInputExample() {
     const [asunto, setAsunto] = useState('');
     const [mensaje, setMensaje] = useState('');
     const [receptor, setReceptor] = useState(1);
-    const MENSAJES_API_URL = configData.MENSAJES_API_URL;
+    const MENSAJES_API_URL = process.env.REACT_APP_MENSAJES;
 
     const handleAsuntoChange = (event) => {
         setAsunto(event.target.value);

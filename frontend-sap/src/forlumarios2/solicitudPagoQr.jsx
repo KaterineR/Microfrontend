@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import {  Button, Col, Row } from 'react-bootstrap';
 import axios from 'axios';
+const URL_USER = process.env.REACT_APP_USUARIO;
+const urlboletas= process.env.REACT_APP_BOLETAS;
+
+
 
 function SolicitudPagoQr() {
   const [boletas, setBoletas] = useState([]);
@@ -12,8 +16,8 @@ function SolicitudPagoQr() {
     const fetchData = async () => {
       try {
         const [boletasResponse, usersResponse] = await Promise.all([
-          axios.get('http://localhost:8000/api/boletas'),
-          axios.get('http://localhost:8000/api/users')
+          axios.get(urlboletas),
+          axios.get(URL_USER)
         ]);
   
         const boletasData = boletasResponse.data;
@@ -60,7 +64,7 @@ function SolicitudPagoQr() {
     const boletaAceptada = boletas.find(boleta => boleta.id === id);
   
     axios
-      .put(`http://localhost:8000/api/boletas/${id}`, { estado: 5 })
+      .put(`${urlboletas}/${id}`, { estado: 5 })
       .then(response => {
         setAceptados([...aceptados, boletaAceptada]);
         setBoletas(boletas.filter(boleta => boleta.id !== id));
@@ -75,7 +79,7 @@ function SolicitudPagoQr() {
     const boletaRechazada = boletas.find(boleta => boleta.id === id);
   
     axios
-      .put(`http://localhost:8000/api/boletas/${id}`, { estado: 6 })
+      .put(`${urlboletas}/${id}`, { estado: 6 })
       .then(response => {
         setRechazados([...rechazados, boletaRechazada]);
         setBoletas(boletas.filter(boleta => boleta.id !== id));

@@ -28,7 +28,7 @@ function ParqueoForm() {
     { value: 'Domingo', label: 'Domingo' }
   ];
 
-  const URL_HORARIOPARQUEO ='http://localhost:8000/api/horarioparqueos';
+  const URL_HORARIOPARQUEO =process.env.REACT_APP_HORARIOPARQUEO;
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -58,7 +58,7 @@ function ParqueoForm() {
   }  
 
   useEffect(() => {
-    axios.get('http://localhost:8000/api/horarioparqueos')
+    axios.get(URL_HORARIOPARQUEO)
       .then(response => {
         const newShifts = response.data.map(shift => ({
           horaAbre: shift.hora_ini,

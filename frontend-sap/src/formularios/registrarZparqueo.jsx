@@ -6,8 +6,9 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import configData from '../config/config.json';
 
-const ZONA_URL = configData.ZONAS_API_URL;
-const URL_IMAGENSTORAGE = configData.IMAGENSTORAGE_API_URL;
+const ZONA_URL = process.env.REACT_APP_ZONAS;
+const URL_IMAGENSTORAGE = process.env.REACT_APP_IMAGENSTORAGE;
+const urlaux =process.env.REACT_APP_FOTOAUXI;
 
 const RegistroZonasParqueo = () => {
   
@@ -17,7 +18,7 @@ const RegistroZonasParqueo = () => {
   const [direccion, setDireccion] = useState("");
   const [foto, setFoto] = useState("");
   const [sitios, setSitios] = useState("SitiosDisponibles");
-  const [fotoString, setFotoString] = useState("imagen.jpg");
+ 
 
   const handleNombreChange = (event) => {
     setNombre(event.target.value);
@@ -80,7 +81,7 @@ const RegistroZonasParqueo = () => {
     await axios.post(URL_IMAGENSTORAGE, fd)
     .then(response=>{ 
         var urli= response.data.urlimagen;
-        var auxi = `http://localhost:8000/${urli}`;
+        var auxi = `${urlaux}/${urli}`;
         console.log(auxi);
     axios.post(ZONA_URL, {
       nombre: nombre,

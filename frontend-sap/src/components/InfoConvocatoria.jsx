@@ -3,10 +3,12 @@ import axios from 'axios';
 
 function InfoConvocatoria() {
 
+  const URL_CONVOCATARIA = process.env.REACT_APP_CONVOCATORIA;
+
     const [boletas, setBoletas] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/parqueos")
+      .get(URL_CONVOCATARIA)
       .then((response) => {
         var ult = response.data[response.data.length -1];
         setBoletas(ult);

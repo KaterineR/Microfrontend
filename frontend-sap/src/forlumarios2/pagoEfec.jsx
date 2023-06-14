@@ -6,9 +6,10 @@ import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const CLIENTES_API_URL = configData.SOLOCLIENTE_API_URL;
-const BOLETAS_API_URL = configData.BOLETAS_API_URL;
-const URL_CONVOCATARIA = configData.CONVOCATORIA_API_URL;
+const CLIENTES_API_URL = process.env.REACT_APP_SOLOCLIENTE;
+const URL_CONVOCATARIA = process.env.REACT_APP_CONVOCATORIA;
+const urlboletas= process.env.REACT_APP_BOLETAS;
+
 function PagoEfectivo() {
   const [formData, setFormData] = useState({
     mesesPagar: '',
@@ -56,7 +57,7 @@ function PagoEfectivo() {
   }, []);
   
   useEffect(() => {
-    fetch('http://localhost:8000/api/parqueos')
+    fetch(URL_CONVOCATARIA)
       .then(response => response.json())
       .then(data => {
         let precioMe = parseInt(ultimaConv.precio_mensual);
@@ -108,7 +109,7 @@ function PagoEfectivo() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    await axios.post(BOLETAS_API_URL, 
+    await axios.post(urlboletas, 
       {
         mensualidad: formData.mesesPagar,
         monto: formData.costoMensualida,

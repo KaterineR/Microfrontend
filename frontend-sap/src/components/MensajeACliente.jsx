@@ -7,8 +7,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const cookies = new Cookies();
-const MENSAJES_API_URL = configData.MENSAJES_API_URL;
-const CLIENTES_API_URL = configData.SOLOCLIENTE_API_URL;
+const MENSAJES_API_URL = process.env.REACT_APP_MENSAJES;
+const CLIENTES_API_URL = process.env.REACT_APP_SOLOCLIENTE
 
 function MensajeACliente() {
 

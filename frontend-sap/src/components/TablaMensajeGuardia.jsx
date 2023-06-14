@@ -6,9 +6,9 @@ import Cookies from 'universal-cookie';
 
 const cookies = new Cookies();
 
-const API_URL_USERS = configData.MENSGUARDIA_API_URL;
-const API_URL_GLOBAL = configData.MENSGLOBAL_API_URL;
-const API_URL_INDI = configData.MENSCLIENTE_API_URL;
+const API_URL_USERS = process.env.REACT_APP_MENSAJEGUARDIA;
+const API_URL_GLOBAL = process.env.REACT_APP_MENSAJEGLOBAL;
+const API_URL_INDI = process.env.REACT_APP_MENSAJESCLIENTE;
 
 const TablaMensajeGuardia = () => {
     const [users, setUsers] = useState( [] );

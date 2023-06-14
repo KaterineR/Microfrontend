@@ -7,8 +7,9 @@ import 'react-toastify/dist/ReactToastify.css';
 import configData from '../config/config.json';
 
 const cookies = new Cookies();
-const URL_VEHICULOS = configData.VEHICULOS_API_URL;
-const URL_IMAGENSTORAGE = configData.IMAGENSTORAGE_API_URL;
+const URL_VEHICULOS = process.env.REACT_APP_VEHICULOS;
+const URL_IMAGENSTORAGE = process.env.REACT_APP_IMAGENSTORAGE;
+const urlaux =process.env.REACT_APP_FOTOAUXI;
 
 const RegistroVehiculo = () => {
   const [nombre, setNombre] = useState("");
@@ -74,7 +75,7 @@ const RegistroVehiculo = () => {
     await axios.post(URL_IMAGENSTORAGE, fd)
     .then(response=>{ 
         var urli= response.data.urlimagen;
-        var auxi = `http://localhost:8000/${urli}`;
+        var auxi = `${urlaux}/${urli}`;
 
     axios.post(URL_VEHICULOS, {
       modelo: nombre,

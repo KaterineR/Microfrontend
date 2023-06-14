@@ -10,7 +10,7 @@ const cookies = new Cookies();
 
 const TablaVehiculoSE = () => {
     const [vehiculos, setVehiculos] = useState( [] );
-    const API_URL_VEHICULOS = configData.VEHICLIS_API_URL;
+    const API_URL_VEHICULOS = process.env.REACT_APP_VEHICLIS;
 
     const tipou = cookies.get('tipo_usuario');
     const [admin, setAdmin] = useState(true);

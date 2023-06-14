@@ -2,8 +2,8 @@ import React, {useEffect, useState} from 'react'
 import axios from 'axios'
 import configData from '../config/config.json'
 
-const API_URL_USERS = configData.SOLOUCOMUN_API_URL;
-const CAPI_URL_USERS = configData.CUSER_API_URL;
+const API_URL_USERS = process.env.REACT_APP_SOLOUSUARIOCOMUN;
+const CAPI_URL_USERS = process.env.REACT_APP_USUARIO;
 
 const TablaUser = () => {
     const [users, setUsers] = useState( [] );

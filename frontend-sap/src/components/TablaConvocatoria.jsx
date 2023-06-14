@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import axios from 'axios'
 import configData from '../config/config.json'
 
-const API_URL_USERS = configData.CONVOCATORIA_API_URL;
+const API_URL_USERS = process.env.REACT_APP_CONVOCATORIA;
 
 const TablaConvocatoria = () => {
     const [users, setUsers] = useState( [] );

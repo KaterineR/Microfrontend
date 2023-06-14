@@ -6,8 +6,8 @@ import Cookies from 'universal-cookie';
 
 const cookies = new Cookies();
 
-const API_URL_USERS = configData.MENSCLIENTE_API_URL;
-const API_URL_GLOBAL = configData.MENSGLOBAL_API_URL;
+const API_URL_USERS = process.env.REACT_APP_MENSAJESCLIENTE;
+const API_URL_GLOBAL =process.env.REACT_APP_MENSAJEGLOBAL;
 
 const TablaMensaje = () => {
     const [users, setUsers] = useState( [] );

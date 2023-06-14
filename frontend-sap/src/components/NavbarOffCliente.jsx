@@ -10,7 +10,7 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 const cookies = new Cookies();
 
-
+const urlzonas = process.env.REACT_APP_ZONAS;
 function NavBarOffCliente() {
 
   const nombre = cookies.get('name');
@@ -24,7 +24,7 @@ function NavBarOffCliente() {
 
   useEffect(() => {
     axios
-    .get(`http://localhost:8000/api/zonas/${idParqueo}`)
+    .get(`${urlzonas}/${idParqueo}`)
       .then((response) => {
         setNombreZona(response.data.nombre);
       })

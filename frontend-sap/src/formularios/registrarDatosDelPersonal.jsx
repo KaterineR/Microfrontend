@@ -5,8 +5,10 @@ import configData from '../config/config.json';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const User_Api_Url = configData.USER_API_URL;
-const URL_IMAGENSTORAGE = configData.IMAGENSTORAGE_API_URL;
+const User_Api_Url = process.env.REACT_APP_REGISTROUSUARIO;
+const URL_IMAGENSTORAGE = process.env.REACT_APP_IMAGENSTORAGE;
+const urlaux =process.env.REACT_APP_FOTOAUXI;
+const urlhorarios = process.env.REACT_APP_HORARIOPERSONAL;
 
 const regexSoloLetras = /^[a-zA-Z]+$/;
 const regexSoloNumeros = /^[0-9]+$/;
@@ -70,9 +72,7 @@ const FormularioRegistroPerso = () => {
   const [direccion, setDireccion] = useState("");
 
   const [cargo, setCargo] = useState("");
-  const [sitio, setSitio] = useState("sitio");
-  const [estado, setEstado] = useState(1);
-  const [fotoString, setFotoString] = useState("imagen.jpg");
+
 
 
   const [errorNombre, setErrorNombre] = useState('');
@@ -168,7 +168,7 @@ const FormularioRegistroPerso = () => {
       await axios.post(URL_IMAGENSTORAGE, fd)
       .then(response=>{ 
           var urli= response.data.urlimagen;
-          var auxi = `http://localhost:8000/${urli}`;
+          var auxi = `${urlaux}/${urli}`;
       axios.post(User_Api_Url,{
       name: nombre,
       apellido: apellido,
@@ -207,7 +207,7 @@ const FormularioRegistroPerso = () => {
   useEffect(() => {
     const fetchHorariosTrabajo = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/api/horarios');
+        const response = await axios.get(urlhorarios);
         const horariosData = response.data.map((horario) => ({
           ...horario,
           horaInicio: horario.horaInicio, // Reemplaza "horaInicio" con el nombre de la propiedad en tu objeto de horario de trabajo

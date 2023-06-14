@@ -4,7 +4,9 @@ import axios from 'axios'
 import configData from '../config/config.json'
 import Cookies from "universal-cookie";
 const cookies = new Cookies();
-const URL_CONVOCATARIA = configData.CONVOCATORIA_API_URL;
+const URL_CONVOCATARIA = process.env.REACT_APP_CONVOCATORIA;
+const URL_USER = process.env.REACT_APP_USUARIO;
+
 
 function SolicitarEspacio() {
 
@@ -60,7 +62,7 @@ function SolicitarEspacio() {
         id_zona: null,
         id_horario: null
       };
-      axios.put(`http://localhost:8000/api/users/${id}`, data)
+      axios.put(`${URL_USER}/${id}`, data)
         .then(response => {
           console.log("Datos enviados:", data);
         })
@@ -112,7 +114,7 @@ function SolicitarEspacio() {
       id_zona: null,
       id_horario: null
     };
-    axios.put(`http://localhost:8000/api/users/${id}`, data)
+    axios.put(`${URL_USER}/${id}`, data)
       .then(response => {
         console.log("Datos enviados:", data);
         setEnviado(false);

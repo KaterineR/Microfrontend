@@ -6,6 +6,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './LoginForm.css'; //
 import Cookies from 'universal-cookie';
 
+const URL_CONVOCATARIA = process.env.REACT_APP_CONVOCATORIA;
+
+
 const cookies = new Cookies();
 
 function LoginForm(){
@@ -18,7 +21,7 @@ function LoginForm(){
   const [boletas, setBoletas] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/parqueos")
+      .get(URL_CONVOCATARIA)
       .then((response) => {
         setBoletas(response.data);
       })
@@ -33,7 +36,8 @@ function LoginForm(){
 
 
 
-  const URL_USER ='http://localhost:8000/api/auth/login';
+  const URL_USER =process.env.REACT_APP_LOGIN;
+
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);

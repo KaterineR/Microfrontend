@@ -3,6 +3,7 @@ import axios from 'axios'
 import React, { useState, useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+const urlhorariospersonal = process.env.REACT_APP_HORARIOPERSONAL;
 
 function RegistroH() {
   const [name, setName] = useState('');
@@ -14,7 +15,7 @@ function RegistroH() {
   const [shifts, setShifts] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:8000/api/horarios')
+    axios.get(urlhorariospersonal)
       .then(response => {
         const newShifts = response.data.map(shift => ({
           name: shift.nombre,
@@ -90,7 +91,7 @@ function RegistroH() {
     
 
     try {
-      await axios.post('http://localhost:8000/api/horarios', {
+      await axios.post(urlhorariospersonal, {
         nombre: name,
         inicio_turno: startTime,
         salida_turno: endTime

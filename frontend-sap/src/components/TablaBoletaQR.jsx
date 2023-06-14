@@ -3,8 +3,8 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 import configData from '../config/config.json'
 
-const API_URL_BOLETAS = configData.BOLETAQRS_API_URL;
-const API_URL_BOLETAS2 = configData.BOLETAS_API_URL;
+const API_URL_BOLETAS =process.env.REACT_APP_BOLETAQRS;
+const API_URL_BOLETAS2 = process.env.REACT_APP_BOLETAS;
 
 const TablaBoletaQR = () => {
     const [boletas, setBoletas] = useState( [] );

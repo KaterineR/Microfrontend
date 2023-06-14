@@ -42,7 +42,7 @@ function resetForm() {
   const [confirmarContraseña, setConfirmarContraseña] = useState('');
   const [correoElectronico, setCorreoElectronico] = useState('');
 
-  const User_Api_Url = configData.USER_API_URL;
+  const User_Api_Url = process.env.REACT_APP_REGISTROUSUARIO;
 
   const [errorNombre, setErrorNombre] = useState('');
   const [errorApellido, setErrorApellido] = useState('');

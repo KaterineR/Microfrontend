@@ -8,8 +8,8 @@ import { PDFViewer } from '@react-pdf/renderer';
 
 const cookies = new Cookies();
 
-const API_URL_BOLETAS = configData.MISBOLCLI_API_URL;
-const API_URL_BOLETAS2 =configData.BOLETACLIENTE_API_URL;
+const API_URL_BOLETAS = process.env.REACT_APP_MISBOLECLI;
+const API_URL_BOLETAS2 =process.env.REACT_APP_BOLETACLIENTE;
 
 const TablaMiBoleta = () => {
     const [boletas, setBoletas] = useState( [] );

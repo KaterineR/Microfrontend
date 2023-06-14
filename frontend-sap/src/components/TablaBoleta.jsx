@@ -2,8 +2,8 @@ import React, {useEffect, useState} from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 
-const API_URL_BOLETAS ='http://localhost:8000/api/clibols'
-const API_URL_BOLETAS2 ='http://localhost:8000/api/boletas'
+const API_URL_BOLETAS =process.env.REACT_APP_BOLETACLIENTE;;
+const API_URL_BOLETAS2 =process.env.REACT_APP_BOLETAS;;
 
 const TablaBoleta = () => {
     const [boletas, setBoletas] = useState( [] );
