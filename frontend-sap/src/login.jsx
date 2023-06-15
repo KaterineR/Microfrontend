@@ -5,6 +5,7 @@ import { Form, FormGroup, FormLabel, FormControl, Button, Alert } from 'react-bo
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './LoginForm.css'; //
 import Cookies from 'universal-cookie';
+import env from './.env.templete';
 
 const URL_CONVOCATARIA = process.env.REACT_APP_CONVOCATORIA;
 
@@ -52,6 +53,7 @@ function LoginForm(){
   };
 
   const handleSubmit = async (event) => {
+    console.log("asdasd",URL_USER);
     event.preventDefault();
 
     await axios.post(URL_USER, {
