@@ -10,7 +10,7 @@ function NavBarMenu() {
     <Navbar className='navbar333' style={{ backgroundColor: 'rgb(12,77,81)' }} expand="lg">
       {/* style={{ backgroundColor: 'rgb(8, 8, 100)' }} */}
       <Container>
-        <Navbar.Brand style={{ color: 'rgb(255,255,255)' }} href="/">Parqueo FCyT </Navbar.Brand>
+        <Navbar.Brand style={{ color: 'rgb(255,255,255)' }} href="/">Parqueo sdfasd FCyT </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
